@@ -66,4 +66,12 @@ class QuizBrain {
     }
     return "Finished";
   }
+
+  bool isQuizFinished() {
+    return questionNumber == getQuestionsSize() - 1;
+  }
+
+  void reset() {
+    questionNumber = -1;
+  }
 }
