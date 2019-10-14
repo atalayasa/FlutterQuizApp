@@ -2,4 +2,4 @@
 
 It is the self learning Flutter quiz application written Dart language.
 
-![alt text](https://github.com/atalayasa/FlutterBasicPiano/blob/master/assets/quizApp.png)
+![alt text](https://github.com/atalayasa/FlutterQuizApp/blob/master/assets/quizApp.png)
