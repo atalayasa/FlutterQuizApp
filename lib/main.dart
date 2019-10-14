@@ -26,7 +26,20 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
+  List<String> questions = [
+    "3 + 5 = 7",
+    "6 + 11 = 17",
+    "16 + 21 = 37"
+  ];
+  List<bool> answers = [false, true, true];
 
+  int questionNumber = 0;
+  String getQuestion() {
+    if (questions.length > questionNumber) {
+      return questions[questionNumber];
+    }
+    return "Finished";
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,7 +52,7 @@ class _QuizPageState extends State<QuizPage> {
             child: Padding(
               padding: EdgeInsets.all(10.0),
               child: Text(
-                "This is where the question text will go.",
+                getQuestion(),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 25,
@@ -63,7 +76,12 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                  if (answers[questionNumber]) {
+                    scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                  } else {
+                    scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                  }
+                  questionNumber += 1;
                 });
               },
             ),
@@ -83,7 +101,12 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                  if (answers[questionNumber]) {
+                    scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                  } else {
+                    scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                  }
+                  questionNumber += 1;
                 });
               },
             ),
